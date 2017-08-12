@@ -25,3 +25,4 @@ Currently supported libraries:
 * [ButterBean](https://github.com/justintadlock/butterbean) by Justin Tadlock. - `butterbean`
 * [Extended Taxonomies](https://github.com/johnbillion/extended-taxos) by John Blackbourn. - `extended-taxos`
 * [Extended CPTs](https://github.com/johnbillion/extended-cpts) by John Blackbourn. - `extended-cpts`
+* [Freemius](https://github.com/Freemius/wordpress-sdk) by Freemius. - `freemius`
