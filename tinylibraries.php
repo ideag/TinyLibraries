@@ -24,7 +24,7 @@ function TinyLibraries() {
 	}
 	return TinyLibrariesClass::$instance;
 }
-add_action( 'plugins_loaded', array( TinyLibraries(), 'load' ) );
+add_action( 'plugins_loaded', 'TinyLibraries' );
 
 /**
  * Main olugin class.
@@ -329,34 +329,13 @@ class TinyLibrariesClass {
 	 * @return mixed 					 array of library info or false if library not found.
 	 */
 	private function _get_library_data( $library ) {
-		$data = array(
-			'wp-background-processing'	=> array(
-				'name'				=> 'WP Background Processing',
-				'description'	=> 'Asynchronous requests and background processing in WordPress.',
-				'author'			=> 'Delicious Brains Inc.',
-				'author_uri'	=> 'https://deliciousbrains.com/',
-				'version'			=> '1.0',
-				'uri'					=> 'https://github.com/A5hleyRich/wp-background-processing',
-				'download'		=> 'https://github.com/A5hleyRich/wp-background-processing/archive/master.zip',
-				'main_file'		=> 'wp-background-processing.php',
-				'main_class'	=> 'WP_Background_Process',
-			),
-			'butterbean' => array(
-				'name'				=> 'ButterBean',
-				'description'	=> 'A little post meta framework.',
-				'author'			=> 'Justin Tadlock',
-				'author_uri'	=> 'http://themehybrid.com',
-				'version'			=> '1.0.0',
-				'uri'					=> 'https://github.com/justintadlock/butterbean',
-				'download'		=> 'https://github.com/justintadlock/butterbean/archive/master.zip',
-				'main_file'		=> 'class-butterbean.php',
-				'main_class'	=> 'ButterBean',
-
-			),
-		);
-		if ( ! isset( $data[ $library ] ) ) {
+		$url = "https://api.aru.lt/json/tinylibraries/v1/library/{$library}";
+		$data = wp_remote_get( $url );
+		if ( is_wp_error( $data ) ) {
 			return false;
 		}
-		return $data[ $library ];
+		$data = $data['body'];
+		$data = json_decode( $data, true );
+		return $data;
 	}
 }
