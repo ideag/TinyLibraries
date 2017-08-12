@@ -21,5 +21,6 @@ Later in the code, plugin developer can require_once the library via `TinyLibrar
 
 Currently supported libraries:
 
-* [WP Background Processing](https://github.com/A5hleyRich/wp-background-processing) by Delicious Brains Inc.
-* [ButterBean](https://github.com/justintadlock/butterbean) by Justin Tadlock.
+* [WP Background Processing](https://github.com/A5hleyRich/wp-background-processing) by Delicious Brains Inc. - `wp-background-processing`
+* [ButterBean](https://github.com/justintadlock/butterbean) by Justin Tadlock. - `butterbean`
+* [Extended Taxonomies](https://github.com/johnbillion/extended-taxos) by John Blackbourn. - `extended-taxos`
