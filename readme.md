@@ -17,7 +17,13 @@ Libraries: wp-background-processing
 
 In this example plugin declares that it requires WP Background Processing library. It will be downloaded and installed when this plugin is activated.
 
-Later in the code, plugin developer can require_once the library via `TinyLibraries()->require_library( 'wp-background-processing' );` method. You can see this in work in sample plugins: `tinylibraries-sample-a.php`, `tinylibraries-sample-b.php` and `tinylibraries-sample-ab.php`.
+Later in the code, plugin developer can require_once the library via `TinyLibraries()->require_library( 'wp-background-processing' );` method. You can see this in work in sample plugins: `tinylibraries-sample-a.php`, `tinylibraries-sample-b.php` and `tinylibraries-sample-ab.php`. They can also provide a fallback to make sure the plugin functions correctly even if TinyLibraries is not present:
+
+```
+if ( ! function_exists( 'TinyLibraries' ) || ! TinyLibraries()->require_library( 'wp-background-processing' ) ) {
+  require_once( 'path/to/my/local/copy/of/wp-background-processing.php' );
+}
+```
 
 Currently supported libraries:
 
